@@ -1,0 +1,7 @@
+robust I/O package adapted from the CS:APP book.
+
+* rio_readn: Unbuffered read.
+* rio_writen: Unbuffered write.
+* rio_readnb: Buffered read.
+* rio_readlineb: Buffered readline.
+* rio_init: Initialize a *rio_t* buffer. This function should be called before buffered I/O.
