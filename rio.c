@@ -1,7 +1,7 @@
 #include "rio.h"
 
 ssize_t
-readn(int fd , void *buf, size_t nbyte) {
+rio_readn(int fd , void *buf, size_t nbyte) {
   ssize_t nread;  // number of bytes read
   size_t  nleft = nbyte;  // number of bytes left
   char* bufp = buf; // convert to a byte pointer
@@ -20,7 +20,7 @@ readn(int fd , void *buf, size_t nbyte) {
 }
 
 ssize_t
-writen(int fd , void *buf, size_t nbyte) {
+rio_writen(int fd , void *buf, size_t nbyte) {
   ssize_t nwritten; // number of bytes written
   size_t  nleft = nbyte;  // number of bytes left
   char* bufp = buf; // convert to a byte pointer
