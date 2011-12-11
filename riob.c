@@ -6,7 +6,7 @@ void
 rio_init(rio_t *rp, int fd) {
 	rp->fd	= fd;
 	rp->cnt	= 0;
-	rp->next = rp->buf = (char*)NULL;
+	rp->next = rp->buf;
 }
 
 // buffered version of read system call
@@ -66,7 +66,7 @@ rio_readnb(rio_t *rp, void *buf, size_t nbyte) {
 	char *bufp = (char*)buf;
 
 	while (nleft > 0)
-		if ((nread = rio_read(rp->fd, bufp, nleft)) < 0) {
+		if ((nread = rio_read(rp, bufp, nleft)) < 0) {
 			if (errno != EINTR) return -1;
 		} else if (nread == 0) {	// EOF
 			break;
