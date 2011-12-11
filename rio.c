@@ -8,7 +8,7 @@ readn(int fd , void *buf, size_t nbyte) {
 
   while (nleft > 0)
     if ((nread = read(fd, bufp, nleft)) < 0) {  // an error occurred
-      if (ERRNO != EINTR) return -1;
+      if (errno != EINTR) return -1;
     } else if (nread == 0) {  // EOF
       break;
     } else {
@@ -27,7 +27,7 @@ writen(int fd , void *buf, size_t nbyte) {
 
   while (nleft > 0)
     if ((nwritten = write(fd, bufp, nleft)) < 0) {  // an error occurred
-      if (ERRNO != EINTR) return -1;
+      if (errno != EINTR) return -1;
     } else {  // write never encounters an EOF condition
       nleft -= nwritten;
       bufp  += nwritten;
