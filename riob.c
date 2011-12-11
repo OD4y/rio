@@ -75,5 +75,5 @@ rio_readnb(rio_t *rp, void *buf, size_t nbyte) {
 			bufp	+= nread;
 		}
 
-	return (n - nleft);
+	return (nbyte - nleft);
 }
