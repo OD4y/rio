@@ -14,7 +14,7 @@ rio_init(rio_t *rp, int fd) {
 #define	MIN(a, b)	((a) < (b) ? (a) : (b))
 static
 ssize_t rio_read(rio_t *rp, char *buf, size_t nbyte) {
-	while (rp->cnt < 0) {	// refill if buf is empty
+	while (rp->cnt <= 0) {	// refill if buf is empty
 		rp->cnt = read(rp->fd, rp->buf, sizeof(rp->buf));
 		if (rp->cnt < 0) {
 			if (errno != EINTR) return -1;
@@ -39,7 +39,7 @@ ssize_t rio_read(rio_t *rp, char *buf, size_t nbyte) {
 
 // read at most (maxlen -1)bytes sized textline from rp to buf
 ssize_t
-rio_readline(rio_t *rp, void *buf, size_t maxlen) {
+rio_readlineb(rio_t *rp, void *buf, size_t maxlen) {
 	int n, rc;
 	char c, *bufp = (char*)buf;
 

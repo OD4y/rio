@@ -17,6 +17,6 @@ extern ssize_t rio_writen(int fd , void *buf, size_t nbyte);
 
 extern void rio_init(rio_t *rp, int fd);
 extern ssize_t rio_readnb(rio_t *rp, void *buf, size_t nbyte);
-extern ssize_t rio_readline(rio_t *rp, void *buf, size_t maxlen);
+extern ssize_t rio_readlineb(rio_t *rp, void *buf, size_t maxlen);
 
 #endif
